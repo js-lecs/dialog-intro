@@ -1,0 +1,14 @@
+<h1> {{title}} </h1>
+
+<div [class]="className">
+
+</div>
+<br>
+<button (click)="changeColor('bgRed')">ChangeToRed</button>
+<button (click)="changeColor('bgBlue')">ChangeToBlue</button>
+
+<br>
+<br>
+
+<input type="text" class="form-control" [(ngModel)]="name">
+<h1> Hello {{name}}</h1>
