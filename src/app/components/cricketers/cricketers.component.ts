@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+interface Cricketer{
+  name:String;
+  number:Number;
+  type:String;
+}
 @Component({
   selector: 'app-cricketers',
   templateUrl: './cricketers.component.html',
@@ -7,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CricketersComponent implements OnInit {
 
-  public cricketers = [
+  public cricketers:Array<Cricketer> = [
     {
       name: "Sanath Jayasuriya",
       number: 7,
@@ -25,13 +30,21 @@ export class CricketersComponent implements OnInit {
     }
   ];
 
-  public activeCricketer = {};
+  public activeCricketer:Cricketer = <Cricketer>{};
+  public selectedCricketerIndex = -1;
   constructor() { }
 
   ngOnInit() {
   }
 
-  selectCricketer(cricketerObj) {
+  selectCricketer(cricketerObj:Cricketer, index) {
     this.activeCricketer = cricketerObj;
+    this.selectedCricketerIndex = index;
+  }
+
+  catchNameEmit(newName){
+    // alert(newName);
+    this.cricketers[this.selectedCricketerIndex].name = newName;
+    // assign the new name to the relevent cricketer object in the array
   }
 }

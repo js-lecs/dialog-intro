@@ -8,6 +8,7 @@ import { TabComponent } from './components/tab/tab.component';
 import { Tab1Component } from './components/tab/tab1/tab1.component';
 import { Tab2Component } from './components/tab/tab2/tab2.component';
 import { CricketersComponent } from './components/cricketers/cricketers.component';
+import { CricketerViewComponent } from './components/cricketers/cricketer-view/cricketer-view.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CricketersComponent } from './components/cricketers/cricketers.componen
     TabComponent,
     Tab1Component,
     Tab2Component,
-    CricketersComponent
+    CricketersComponent,
+    CricketerViewComponent
   ],
   imports: [
     BrowserModule,

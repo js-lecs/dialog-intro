@@ -1,0 +1,14 @@
+<h3> Name : </h3>
+<input type="text" class="form-control" [(ngModel)]="cricketer.name" disabled>
+<h4> Number:   </h4>
+<input type="text" class="form-control" [(ngModel)]="cricketer.number" disabled>
+<h4> Type:  </h4>
+<input type="text" class="form-control" [(ngModel)]="cricketer.type" disabled>
+
+
+
+<hr>
+<h3> Change Name</h3>
+<input type="text" class="form-control" [(ngModel)]="newName">
+<br>
+<button class="btn btn-success" (click)="emitNameToParent()"> Change Name</button>
