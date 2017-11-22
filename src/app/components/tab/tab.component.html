@@ -1,0 +1,11 @@
+
+<button [class]="activeTab === 'tab1'? 'btn btn-info':''" 
+(click)="changeTab('tab1')"> Tab 1</button>
+
+<button [ngClass] = "{'btn btn-info': (activeTab === 'tab2')}"
+(click)="changeTab('tab2')"> Tab 2</button>
+
+<hr>
+
+<app-tab1 *ngIf= "activeTab === 'tab1'"></app-tab1>
+<app-tab2 *ngIf= "activeTab === 'tab2'"></app-tab2>

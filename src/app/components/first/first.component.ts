@@ -9,8 +9,23 @@ export class FirstComponent implements OnInit {
 
   public title:String = "THis is my First Component";
   public className:String = "bgBlue";
-
   public name:String = "";
+
+  public cricketers = [
+    {
+      name: "Sanath Jayasuriya",
+      number: 7
+    },
+    {
+      name: "Kumar Sangakkara",
+      number :11
+    },
+    {
+      name: "Mahela Jayawardane",
+      number: 27
+    }
+  ];
+
   constructor() { }
 
   ngOnInit() {
