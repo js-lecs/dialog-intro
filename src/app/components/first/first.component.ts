@@ -11,20 +11,7 @@ export class FirstComponent implements OnInit {
   public className:String = "bgBlue";
   public name:String = "";
 
-  public cricketers = [
-    {
-      name: "Sanath Jayasuriya",
-      number: 7
-    },
-    {
-      name: "Kumar Sangakkara",
-      number :11
-    },
-    {
-      name: "Mahela Jayawardane",
-      number: 27
-    }
-  ];
+ 
 
   constructor() { }
 

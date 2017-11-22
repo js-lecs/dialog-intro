@@ -7,6 +7,7 @@ import { FirstComponent } from './components/first/first.component';
 import { TabComponent } from './components/tab/tab.component';
 import { Tab1Component } from './components/tab/tab1/tab1.component';
 import { Tab2Component } from './components/tab/tab2/tab2.component';
+import { CricketersComponent } from './components/cricketers/cricketers.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { Tab2Component } from './components/tab/tab2/tab2.component';
     FirstComponent,
     TabComponent,
     Tab1Component,
-    Tab2Component
+    Tab2Component,
+    CricketersComponent
   ],
   imports: [
     BrowserModule,
