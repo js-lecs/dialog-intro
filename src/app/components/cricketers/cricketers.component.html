@@ -19,8 +19,11 @@
 
   <br>
   <br>
+  <button class="btn btn-info" (click)="getNameFromChild()"> Get Name From Child</button>
   <hr>
 
-  <app-cricketer-view (nameEmitter)="catchNameEmit($event)" 
+  <app-cricketer-view #cricketerViewComponent (nameEmitter)="catchNameEmit($event)" 
   [cricketer]="activeCricketer"></app-cricketer-view>
+
 </div>
+

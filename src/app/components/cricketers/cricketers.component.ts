@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CricketerViewComponent } from './cricketer-view/cricketer-view.component';
 
 interface Cricketer{
   name:String;
@@ -30,6 +31,9 @@ export class CricketersComponent implements OnInit {
     }
   ];
 
+  // instantiate child component used in the HTML for the ts file
+  @ViewChild('cricketerViewComponent') cricketerView:CricketerViewComponent;
+
   public activeCricketer:Cricketer = <Cricketer>{};
   public selectedCricketerIndex = -1;
   constructor() { }
@@ -46,5 +50,9 @@ export class CricketersComponent implements OnInit {
     // alert(newName);
     this.cricketers[this.selectedCricketerIndex].name = newName;
     // assign the new name to the relevent cricketer object in the array
+  }
+
+  getNameFromChild(){
+    alert(this.cricketerView.getNewName());
   }
 }

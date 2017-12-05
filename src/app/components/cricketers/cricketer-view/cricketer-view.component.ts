@@ -22,4 +22,8 @@ export class CricketerViewComponent implements OnInit {
   emitNameToParent() {
     this.nameEmitter.emit(this.newName);
   }
+
+  public getNewName(){
+    return this.newName;
+  }
 }
