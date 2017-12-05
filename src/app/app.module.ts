@@ -10,23 +10,10 @@ import { Tab1Component } from './components/tab/tab1/tab1.component';
 import { Tab2Component } from './components/tab/tab2/tab2.component';
 import { CricketersComponent } from './components/cricketers/cricketers.component';
 import { CricketerViewComponent } from './components/cricketers/cricketer-view/cricketer-view.component';
-
-const APP_ROUTES: Routes = [
-  {
-    path: 'cricketers',
-    component: CricketersComponent
-  },
-  {
-    path: 'exampleTab',
-    component: TabComponent
-  },
-  {
-    path:'',
-    redirectTo:'/cricketers',
-    pathMatch:'full'
-  }
-];
-
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { APP_ROUTES } from './routing';
 
 
 
@@ -38,7 +25,10 @@ const APP_ROUTES: Routes = [
     Tab1Component,
     Tab2Component,
     CricketersComponent,
-    CricketerViewComponent
+    CricketerViewComponent,
+    LoginComponent,
+    HomeComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
