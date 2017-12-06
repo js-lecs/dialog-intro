@@ -8,13 +8,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:Router) { }
+
+  constructor(private router: Router) {
+
+  }
 
   ngOnInit() {
   }
 
-  goToHome() {
-    // '/app/home'
-    this.router.navigate(['/','app', 'home']);
+  checkLogin() {
+    // navigate to Home
+    //  /app/home
+
+    this.router.navigate(['/', 'app', 'home']);
   }
+
 }
