@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  public username: String = "";
+  public password: String = "";
 
   constructor(private router: Router) {
 
@@ -17,10 +19,15 @@ export class LoginComponent implements OnInit {
   }
 
   checkLogin() {
-    // navigate to Home
-    //  /app/home
+    if (this.username == 'abc' &&
+      this.password == '123') {
 
-    this.router.navigate(['/', 'app', 'home']);
+      localStorage.setItem('loggedIn', 'true');
+
+      alert("successfully logged in ");
+
+      this.router.navigate(['/', 'app', 'home']);
+    }
   }
 
 }

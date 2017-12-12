@@ -6,6 +6,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { LayoutComponent } from "./pages/layout/layout.component";
 import { Tab1Component } from "./components/tab/tab1/tab1.component";
 import { Tab2Component } from "./components/tab/tab2/tab2.component";
+import { LoginGuard } from "./guards/login.guard";
 
 
 
@@ -47,7 +48,8 @@ export const APP_ROUTES: Routes = [
     {
         path: 'app',
         component: LayoutComponent,
-        children: LAYOUT_ROUTES
+        children: LAYOUT_ROUTES,
+        canActivate:[LoginGuard]
     },
 
     {

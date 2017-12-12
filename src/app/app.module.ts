@@ -14,6 +14,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { APP_ROUTES } from './routing';
+import { LoginGuard } from './guards/login.guard';
 
 
 
@@ -36,7 +37,9 @@ import { APP_ROUTES } from './routing';
     FormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
+  providers: [
+    LoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
