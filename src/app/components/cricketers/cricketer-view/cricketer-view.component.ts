@@ -13,7 +13,7 @@ export class CricketerViewComponent implements OnInit {
 
   @Output() nameEmitter: EventEmitter<any> = new EventEmitter();
 
-  public newName = "";
+  public newName = '';
   constructor() { }
 
   ngOnInit() {
@@ -23,7 +23,11 @@ export class CricketerViewComponent implements OnInit {
     this.nameEmitter.emit(this.newName);
   }
 
-  public getNewName(){
+  public getNewName() {
     return this.newName;
+  }
+
+  public isDirty() {
+    return this.newName !== '';
   }
 }

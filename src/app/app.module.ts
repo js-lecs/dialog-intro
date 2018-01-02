@@ -15,6 +15,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { APP_ROUTES } from './routing';
 import { LoginGuard } from './guards/login.guard';
+import { CricketerUnsavedGurad } from './guards/cricketer-unsaved.guard';
+import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
 
 
 
@@ -29,7 +31,8 @@ import { LoginGuard } from './guards/login.guard';
     CricketerViewComponent,
     LoginComponent,
     HomeComponent,
-    LayoutComponent
+    LayoutComponent,
+    TodoFormComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import { LoginGuard } from './guards/login.guard';
     RouterModule.forRoot(APP_ROUTES)
   ],
   providers: [
-    LoginGuard
+    LoginGuard,
+    CricketerUnsavedGurad
   ],
   bootstrap: [AppComponent]
 })

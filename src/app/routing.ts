@@ -7,6 +7,8 @@ import { LayoutComponent } from "./pages/layout/layout.component";
 import { Tab1Component } from "./components/tab/tab1/tab1.component";
 import { Tab2Component } from "./components/tab/tab2/tab2.component";
 import { LoginGuard } from "./guards/login.guard";
+import { CricketerUnsavedGurad } from "./guards/cricketer-unsaved.guard";
+import { TodoFormComponent } from "./components/todo/todo-form/todo-form.component";
 
 
 
@@ -20,9 +22,9 @@ const TAB_ROUTES: Routes = [
         component: Tab2Component
     },
     {
-        path:'',
-        redirectTo:'/app/exampleTab/tab1',
-        pathMatch:'full'
+        path: '',
+        redirectTo: '/app/exampleTab/tab1',
+        pathMatch: 'full'
     }
 
 ];
@@ -30,7 +32,12 @@ const TAB_ROUTES: Routes = [
 const LAYOUT_ROUTES: Routes = [
     {
         path: 'cricketers',
-        component: CricketersComponent
+        component: CricketersComponent,
+        canDeactivate: [CricketerUnsavedGurad]
+    },
+    {
+        path: 'todo',
+        component: TodoFormComponent
     },
     {
         path: 'exampleTab',
@@ -49,7 +56,7 @@ export const APP_ROUTES: Routes = [
         path: 'app',
         component: LayoutComponent,
         children: LAYOUT_ROUTES,
-        canActivate:[LoginGuard]
+        canActivate: [LoginGuard]
     },
 
     {
