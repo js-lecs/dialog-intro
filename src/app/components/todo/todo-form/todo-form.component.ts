@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FormControl } from '@angular/forms/src/model';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+
 
 
 
@@ -13,6 +13,10 @@ import { FormControl } from '@angular/forms/src/model';
 export class TodoFormComponent implements OnInit {
 
   todoForm: FormGroup;
+  genderList: Array<String> = ['MALE', 'FEMALE'];
+
+  checkBoxList: Array<String> = ['CheckBox-1', 'CheckBox-2'];
+
 
   const_name = 'abc';
   constructor(private fb: FormBuilder) {
@@ -24,10 +28,27 @@ export class TodoFormComponent implements OnInit {
 
   initForm() {
     this.todoForm = this.fb.group({
+      'userDetails': this.fb.group({
+        'username': ['', [Validators.required, Validators.maxLength(10)]],
+        'email': ['', [Validators.required, Validators.email]],
+        'gender': [this.genderList[0]],
+        'checkboxes': this.fb.array([
+          [false],
+          [false]
+        ])
+
+      }),
       'title': ['', [Validators.required, Validators.maxLength(15), Validators.pattern(/^[0-9]{10}/)]],
-      'email': ['', [Validators.required, Validators.email]],
-      'description': ['', [], [this.asyncValidation.bind(this)]]
+      'description': ['', [], [this.asyncValidation.bind(this)]],
+      'subTasks': this.fb.array([
+        ['', [Validators.minLength(5)]]
+      ])
     });
+  }
+
+  addNewSubTask() {
+    (<FormArray>this.todoForm.controls['subTasks']).insert(0, new FormControl('', [Validators.minLength(5)]));
+
   }
 
   customValidation(c: FormControl) {
@@ -60,10 +81,23 @@ export class TodoFormComponent implements OnInit {
   submit() {
     if (this.todoForm.valid) {
       const values = this.todoForm.value;
+      values.userDetails.checkboxes = this.resolveCheckBoxValuesToArray(
+        values.userDetails.checkboxes, this.checkBoxList);
       console.log(values);
     } else {
       alert('invalid');
     }
     console.log(this.todoForm);
+  }
+
+
+  resolveCheckBoxValuesToArray(checkBoxArray, labelArray) {
+    const arr = [];
+    checkBoxArray.map((value, key) => {
+      if (value) {
+        arr.push(labelArray[key]);
+      }
+    });
+    return arr;
   }
 }
