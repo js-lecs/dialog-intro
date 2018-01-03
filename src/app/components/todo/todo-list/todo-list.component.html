@@ -1,0 +1,21 @@
+<div class="container">
+  <h5> Todos Normal</h5>
+
+  <table class="table table-hover">
+    <tr *ngFor="let x of todoList">
+      <td> {{x.description}}</td>
+      <td> {{x.owner}}</td>
+      <td> {{x.created_at}}</td>
+    </tr>
+  </table>
+
+  <h5> Todos Observable</h5>
+
+  <table class="table table-hover">
+    <tr *ngFor="let x of (todoObservable$ | async)">
+      <td> {{x.description}}</td>
+      <td> {{x.owner}}</td>
+      <td> {{x.created_at}}</td>
+    </tr>
+  </table>
+</div>

@@ -9,6 +9,7 @@ import { Tab2Component } from "./components/tab/tab2/tab2.component";
 import { LoginGuard } from "./guards/login.guard";
 import { CricketerUnsavedGurad } from "./guards/cricketer-unsaved.guard";
 import { TodoFormComponent } from "./components/todo/todo-form/todo-form.component";
+import { TodoListComponent } from "./components/todo/todo-list/todo-list.component";
 
 
 
@@ -38,6 +39,10 @@ const LAYOUT_ROUTES: Routes = [
     {
         path: 'todo',
         component: TodoFormComponent
+    },
+    {
+        path: 'todoList',
+        component: TodoListComponent
     },
     {
         path: 'exampleTab',

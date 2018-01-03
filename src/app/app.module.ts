@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { FirstComponent } from './components/first/first.component';
@@ -17,6 +18,8 @@ import { APP_ROUTES } from './routing';
 import { LoginGuard } from './guards/login.guard';
 import { CricketerUnsavedGurad } from './guards/cricketer-unsaved.guard';
 import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
+import { TodoService } from './services/todo.service';
+import { TodoListComponent } from './components/todo/todo-list/todo-list.component';
 
 
 
@@ -32,17 +35,20 @@ import { TodoFormComponent } from './components/todo/todo-form/todo-form.compone
     LoginComponent,
     HomeComponent,
     LayoutComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    HttpModule
   ],
   providers: [
     LoginGuard,
-    CricketerUnsavedGurad
+    CricketerUnsavedGurad,
+    TodoService
   ],
   bootstrap: [AppComponent]
 })
