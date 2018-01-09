@@ -1,18 +1,20 @@
 <div class="container">
   <h5> Todos Normal</h5>
-
+<hr>
   <table class="table table-hover">
-    <tr *ngFor="let x of todoList">
-      <td> {{x.description}}</td>
+    <tr *ngFor="let x of todos">
+      <td> <input class="form-control" [(ngModel)]="x.description"></td>
       <td> {{x.owner}}</td>
       <td> {{x.created_at}}</td>
+      <td> <button class="btn btn-danger" (click)="del(x._id)">Delete</button></td>
+      <td> <button class="btn btn-info" (click)="edit(x)">Edit</button></td>
     </tr>
   </table>
 
   <h5> Todos Observable</h5>
-
+  <hr>
   <table class="table table-hover">
-    <tr *ngFor="let x of (todoObservable$ | async)">
+    <tr *ngFor="let x of ( todoObservable$ | async)">
       <td> {{x.description}}</td>
       <td> {{x.owner}}</td>
       <td> {{x.created_at}}</td>

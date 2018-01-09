@@ -20,6 +20,7 @@ import { CricketerUnsavedGurad } from './guards/cricketer-unsaved.guard';
 import { TodoFormComponent } from './components/todo/todo-form/todo-form.component';
 import { TodoService } from './services/todo.service';
 import { TodoListComponent } from './components/todo/todo-list/todo-list.component';
+import { TodoNewService } from './services/todo-new.service';
 
 
 
@@ -48,7 +49,8 @@ import { TodoListComponent } from './components/todo/todo-list/todo-list.compone
   providers: [
     LoginGuard,
     CricketerUnsavedGurad,
-    TodoService
+    TodoService,
+    TodoNewService
   ],
   bootstrap: [AppComponent]
 })

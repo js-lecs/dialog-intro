@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../../services/todo.service';
 import { Observable } from 'rxjs/Observable';
+import { TodoNewService } from '../../../services/todo-new.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -9,26 +10,46 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TodoListComponent implements OnInit {
 
-  todoList: Array<any> = [];
-  todoObservable$: Observable<any>;
+  todos:Array<any> = [];
+  todoObservable$:Observable<any>;
 
-  constructor(private todoService: TodoService) {
-    this.getTodos();
-
-    // observableTodo
-    this.todoObservable$ = this.todoService.getTodos();
+  constructor(private todoService: TodoService,
+  private todoNewService:TodoNewService) {
+   this.getTodosFromService();
+   this.todoObservable$ = todoNewService.getTodos();
   }
 
   ngOnInit() {
   }
+ 
+  getTodosFromService(){
+    this.todoNewService.getTodos()
+    .subscribe((data)=>{
+      console.log("get todo success", data);
+      this.todos = data.reverse();
+    }, (err)=>{
+      console.log("get todo error", err);
+    })
+  }
+  del(id){
+    // call the service and send a delete request
+    this.todoNewService.deleteTodo(id).subscribe((data)=>{
+      console.log('successfully deleted todo', data);
+      // reload the list
+      this.getTodosFromService();
+    },err => console.log('error todo delete',err));
+   
+  }
 
-  getTodos() {
-    this.todoService.getTodos().subscribe((data) => {
-      this.todoList = data;
-      console.log(data);
-    }, (err) => {
-      console.log('error handler called', err);
-    });
+  edit(todoObj){
+    console.log('new object', todoObj);
+      // call the service 
+      this.todoNewService.editTodo(todoObj)
+      .subscribe(data => {
+        console.log('edit success', data)
+        alert('successfully edited')
+      },err => console.log('error todo update',err));
+          
   }
 
 }

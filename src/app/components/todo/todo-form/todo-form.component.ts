@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+import { TodoNewService } from '../../../services/todo-new.service';
 
 
 
@@ -19,7 +20,8 @@ export class TodoFormComponent implements OnInit {
 
 
   const_name = 'abc';
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+     private todoNewService:TodoNewService) {
     this.initForm();
   }
 
@@ -84,6 +86,14 @@ export class TodoFormComponent implements OnInit {
       values.userDetails.checkboxes = this.resolveCheckBoxValuesToArray(
         values.userDetails.checkboxes, this.checkBoxList);
       console.log(values);
+
+      // send request to server 
+      this.todoNewService.postTodo(this.todoForm.value)
+      .subscribe((data)=>{
+        console.log('post success',data);
+      },(err)=>{
+        console.log('post error', err);
+      })
     } else {
       alert('invalid');
     }
