@@ -9,7 +9,7 @@
       <div class="form-group">
         <label> Username</label>
         <input type="text" formControlName="username" placeholder="username" class="form-control">
-        <div *ngIf="todoForm.controls['userDetails'].controls['username'].invalid">
+        <div *ngIf="todoForm?.controls['userDetails']['controls']['username']['invalid']">
           {{todoForm.controls['userDetails'].controls['username'].errors | json}}
         </div>
       </div>
@@ -17,7 +17,7 @@
       <div class="form-group">
         <label> Email</label>
         <input type="text" formControlName="email" class="form-control" placeholder="Email">
-        <div *ngIf="todoForm.controls['userDetails'].controls['email'].invalid">
+        <div *ngIf="todoForm?.controls['userDetails']['controls']['email'].invalid">
           {{todoForm.controls['userDetails'].controls['email'].errors | json}}
         </div>
       </div>
@@ -58,9 +58,9 @@
     <div formArrayName="subTasks">
       <h6> Sub Tasks</h6>
 
-      <div class="form-group" *ngFor="let subTaskControl of todoForm.controls['subTasks'].controls; let i = index">
+      <div class="form-group" *ngFor="let subTaskControl of todoForm?.controls['subTasks']['controls']; let i = index">
         <input type="text" class="form-control" [formControlName]="i">
-        <div *ngIf="todoForm.controls['subTasks'].controls[i].invalid">
+        <div *ngIf="todoForm.controls['subTasks']['controls'][i].invalid">
           {{todoForm.controls['subTasks'].controls[i].errors | json}}
         </div>
       </div>

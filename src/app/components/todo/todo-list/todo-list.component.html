@@ -1,13 +1,22 @@
 <div class="container">
   <h5> Todos Normal</h5>
-<hr>
+  <h6> Sample number is {{sampleNumber | number:"1.2-5"}}</h6>
+  <h6> Sample currency is {{sampleNumber | currency:"LKR"}}</h6>
+  <hr>
+  <input type="text" class="form-control" [(ngModel)]="searchText">
   <table class="table table-hover">
-    <tr *ngFor="let x of todos">
-      <td> <input class="form-control" [(ngModel)]="x.description"></td>
-      <td> {{x.owner}}</td>
+    <tr *ngFor="let x of (todos | filter:searchText)">
+      <td>
+        <input type="text" (keyup)="onKeyUp($event)" class="form-control" [(ngModel)]="x.description">
+      </td>
+      <td> {{x.owner | uppercase}}</td>
       <td> {{x.created_at}}</td>
-      <td> <button class="btn btn-danger" (click)="del(x._id)">Delete</button></td>
-      <td> <button class="btn btn-info" (click)="edit(x)">Edit</button></td>
+      <td>
+        <button class="btn btn-danger" (click)="del(x._id)">Delete</button>
+      </td>
+      <td>
+        <button class="btn btn-info" (click)="edit(x)">Edit</button>
+      </td>
     </tr>
   </table>
 
@@ -17,7 +26,7 @@
     <tr *ngFor="let x of ( todoObservable$ | async)">
       <td> {{x.description}}</td>
       <td> {{x.owner}}</td>
-      <td> {{x.created_at}}</td>
+      <td> {{x.created_at | date: "yyyy-MMM" | uppercase}}</td>
     </tr>
   </table>
 </div>

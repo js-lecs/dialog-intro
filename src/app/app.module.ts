@@ -21,6 +21,8 @@ import { TodoFormComponent } from './components/todo/todo-form/todo-form.compone
 import { TodoService } from './services/todo.service';
 import { TodoListComponent } from './components/todo/todo-list/todo-list.component';
 import { TodoNewService } from './services/todo-new.service';
+import { FilterPipe } from './pipes/filter.pipe';
+import { HoverDirective } from './directives/hover.directive';
 
 
 
@@ -37,7 +39,9 @@ import { TodoNewService } from './services/todo-new.service';
     HomeComponent,
     LayoutComponent,
     TodoFormComponent,
-    TodoListComponent
+    TodoListComponent,
+    FilterPipe,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,8 @@ import { TodoNewService } from './services/todo-new.service';
     LoginGuard,
     CricketerUnsavedGurad,
     TodoService,
-    TodoNewService
+    TodoNewService,
+
   ],
   bootstrap: [AppComponent]
 })

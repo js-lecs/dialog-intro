@@ -9,7 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class CricketerViewComponent implements OnInit {
 
-  @Input() public cricketer = {};
+  @Input() public cricketer: any = {};
 
   @Output() nameEmitter: EventEmitter<any> = new EventEmitter();
 
